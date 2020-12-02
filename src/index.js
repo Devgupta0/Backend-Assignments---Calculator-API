@@ -24,12 +24,12 @@ app.post("/add",(req,res)=>{
             });
         }else{
             const sum1 = num1+num2;
-            if(diff >= 999999 || num1>=999999 || num2>=999999){
+            if(sum1 >= 999999 || num1>=999999 || num2>=999999){
                 res.send({
                     status: 'error',
                     message: "Overflow",
                 });
-            }else if(diff <= -999999 || num1 <= -999999 || num2 <= -999999){
+            }else if(sum1 <= -999999 || num1 <= -999999 || num2 <= -999999){
                 res.send({
                     status: 'error',
                     message: "Underflow"
@@ -107,6 +107,11 @@ app.post("/divide",(req,res)=>{
         res.send({
             status: 'error',
             message: "Invalid data types"
+        });
+    }else if(num2 === 0){
+        res.send({
+            status: 'error',
+            message: "Cannot divide by zero"
         });
     }else{
         const div = num1/num2;
