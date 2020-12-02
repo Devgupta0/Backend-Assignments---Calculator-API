@@ -53,12 +53,12 @@ app.post("/sub",(req,res)=>{
         });
     }else{
         const sub = num1-num2;
-        if(sub >= 999999 || num1>=999999 || num2>=999999){
+        if(sub > 1000000 || num1>1000000 || num2>1000000){
             res.send({
                 status: 'error',
                 message: "Overflow",
             });
-        }else if(sub <= -999999 || num1 <= -999999 || num2 <= -999999){
+        }else if(sub < -1000000 || num1 < -1000000 || num2 < -1000000){
             res.send({
                 status: 'error',
                 message: "Underflow"
