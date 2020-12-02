@@ -52,13 +52,13 @@ app.post("/sub",(req,res)=>{
             message: "Invalid data types"
         });
     }else{
-        const diff = num1-num2;
-        if(diff >= 999999 || num1>=999999 || num2>=999999){
+        const sub = num1-num2;
+        if(sub >= 999999 || num1>=999999 || num2>=999999){
             res.send({
                 status: 'error',
                 message: "Overflow",
             });
-        }else if(diff <= -999999 || num1 <= -999999 || num2 <= -999999){
+        }else if(sub <= -999999 || num1 <= -999999 || num2 <= -999999){
             res.send({
                 status: 'error',
                 message: "Underflow"
@@ -67,7 +67,7 @@ app.post("/sub",(req,res)=>{
             res.status(200).send({
                 status: 'success',
                 message: "the difference of given two number",
-                difference: diff
+                difference: sub
             });
         }
     }
