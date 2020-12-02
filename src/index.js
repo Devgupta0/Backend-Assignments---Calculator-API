@@ -43,29 +43,27 @@ app.post("/add",(req,res)=>{
     }
 });
         
-app.post('/sub' , (req,res) => {
+app.post('/sub',(req,res)=>{
     const num1 = req.body.num1;
     const num2 = req.body.num2;
-    
-    if(typeof(num1) != "number" || typeof(num2) != "number") {
+    if(typeof(num1) != "number" || typeof(num2) != "number"){
         res.send({
             status: 'error',
             message: "Invalid data types"
         });
-    } else {
-        const sub = num1 - num2;
-        
-        if(sub >= 999999 || num1 >= 999999 || num2 >= 999999) {
+    }else{
+        const sub = num1-num2;
+        if(sub > 1000000 || num1>1000000 || num2>1000000){
             res.send({
                 status: 'error',
-                message: "Overflow"
+                message: "Overflow",
             });
-        } else if (sub <= -999999 || num1 <= -999999 || num2 <= -999999) {
+        }else if(sub < -1000000 || num1 < -1000000 || num2 < -1000000){
             res.send({
                 status: 'error',
                 message: "Underflow"
             });
-        } else {
+        }else{
             res.status(200).send({
                 status: 'success',
                 message: "the difference of given two numbers",
@@ -73,9 +71,7 @@ app.post('/sub' , (req,res) => {
             });
         }
     }
-
 });
-
 app.post("/multiply",(req,res)=>{
     const num1 = req.body.num1;
     const num2 = req.body.num2;
